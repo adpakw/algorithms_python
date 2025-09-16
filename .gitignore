@@ -1,0 +1,12 @@
+/bin
+.DS_STORE
+.DS_Store
+/.idea
+/.vscode
+/venv
+/.venv
+*.pyc
+__pycache__
+.coverage
+htmlcov
+.pytest_cache
