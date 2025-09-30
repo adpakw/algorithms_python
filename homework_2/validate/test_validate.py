@@ -1,10 +1,14 @@
-from validate import count_primes_v2
+from validate import validate_stack_sequences
 
 
-def test_sum():
-    assert count_primes_v2(114) == 30
-    assert count_primes_v2(10) == 4
-    assert count_primes_v2(2) == 0
-    assert count_primes_v2(1) == 0
-    assert count_primes_v2(0) == 0
-    assert count_primes_v2(-10) == 0
+def test_validate_stack_sequences():
+    assert validate_stack_sequences([1, 2, 3, 4, 5], [1, 3, 5, 4, 2])
+    assert not validate_stack_sequences([1, 2, 3], [3, 1, 2])
+    assert validate_stack_sequences([1, 2, 3], [1, 2, 3])
+    assert validate_stack_sequences([1, 2, 3], [3, 2, 1])
+    assert validate_stack_sequences([], [])
+    assert validate_stack_sequences([1], [1])
+    assert validate_stack_sequences([0, 1, 2, 3, 4], [2, 1, 4, 3, 0])
+    assert not validate_stack_sequences([0, 1, 2, 3, 4], [2, 4, 1, 3, 0])
+    assert not validate_stack_sequences([1, 2, 3], [3, 2])
+    assert not validate_stack_sequences([1], [3, 2, 1])
