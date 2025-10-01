@@ -40,7 +40,7 @@ class LinkedList:
         return result
     
     def copy(self):
-        """Создание глубокой копии связного списка, сделано в результате получить отдельный linked list"""
+        """Создание глубокой копии связного списка"""
         new_list = LinkedList()
         
         if self.head is None:

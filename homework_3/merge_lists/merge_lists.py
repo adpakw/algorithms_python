@@ -13,27 +13,27 @@ def merge_two_sorted_lists_without_dummy(
     if l1 is None and l2 is None:
         return result
     elif l1 is None and l2 is not None:
-        result = list2.copy() # сделано в результате получить отдельный linked list
+        result = list2.copy()
         return result
     elif l1 is not None and l2 is None:
-        result = list1.copy() # сделано в результате получить отдельный linked list
+        result = list1.copy()
         return result
 
     if l1.value <= l2.value:
-        result.head = ListNode(l1.value) # сделано в результате получить отдельный linked list
+        result.head = ListNode(l1.value)
         l1 = l1.next
     else:
-        result.head = ListNode(l2.value) # сделано в результате получить отдельный linked list
+        result.head = ListNode(l2.value)
         l2 = l2.next
 
     current = result.head
 
     while l1 is not None and l2 is not None:
         if l1.value <= l2.value:
-            current.next = ListNode(l1.value) # сделано в результате получить отдельный linked list
+            current.next = ListNode(l1.value)
             l1 = l1.next
         else:
-            current.next = ListNode(l2.value) # сделано в результате получить отдельный linked list
+            current.next = ListNode(l2.value)
             l2 = l2.next
         current = current.next
 
@@ -43,7 +43,7 @@ def merge_two_sorted_lists_without_dummy(
         remaining = l2
 
     while remaining:
-        current.next = ListNode(remaining.value) # сделано в результате получить отдельный linked list
+        current.next = ListNode(remaining.value)
         current = current.next
         remaining = remaining.next
 
@@ -63,10 +63,10 @@ def merge_two_sorted_lists_with_dummy(
 
     while l1 and l2:
         if l1.value <= l2.value:
-            current.next = ListNode(l1.value) # сделано в результате получить отдельный linked list
+            current.next = ListNode(l1.value)
             l1 = l1.next
         else:
-            current.next = ListNode(l2.value) # сделано в результате получить отдельный linked list
+            current.next = ListNode(l2.value)
             l2 = l2.next
         current = current.next
 
@@ -75,7 +75,7 @@ def merge_two_sorted_lists_with_dummy(
     else:
         remaining = l2
     while remaining:
-        current.next = ListNode(remaining.value) # сделано в результате получить отдельный linked list
+        current.next = ListNode(remaining.value)
         current = current.next
         remaining = remaining.next
 
