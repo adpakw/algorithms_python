@@ -4,6 +4,14 @@ from linked_list import LinkedList, ListNode
 def merge_two_sorted_lists_without_dummy(
     list1: LinkedList, list2: LinkedList
 ) -> LinkedList:
+    """
+    Логика:
+    - проверяем не пустой ли первый или второй LinkedList (если есть только один, то он и является результатом)
+    - сравниваем головы обоих LinkedList, меньший элемент становится головой результирующего LinkedList
+    - сдвигаем указатель того LinkedList, из которого взяли элемент
+    - пока в ОБОИХ LinkedList остаются элементы
+    - на каждом шаге сравниваем текущие элементы двух LinkedList, меньший элемент добавляется в результат
+    """
     l1 = list1.head
     l2 = list2.head
 
@@ -53,6 +61,14 @@ def merge_two_sorted_lists_without_dummy(
 def merge_two_sorted_lists_with_dummy(
     list1: LinkedList, list2: LinkedList
 ) -> LinkedList:
+    """
+    Логика:
+    - проверяем не пустой ли первый или второй LinkedList (если есть только один, то он и является результатом)
+    - сравниваем головы обоих LinkedList, меньший элемент становится головой результирующего LinkedList
+    - сдвигаем указатель того LinkedList, из которого взяли элемент
+    - пока в ОБОИХ LinkedList остаются элементы
+    - на каждом шаге сравниваем текущие элементы двух LinkedList, меньший элемент добавляется в результат
+    """
     l1 = list1.head
     l2 = list2.head
 

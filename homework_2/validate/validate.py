@@ -2,6 +2,13 @@ from stack import Stack
 
 
 def validate_stack_sequences(pushed, popped):
+    """
+    Логика:
+    1) итеративно кладем в стек элементы pushed
+    2) на каждой итерации проверяем ("первый" элемент popped = top'у стэка)
+        2.1) если равен, то делаем "поп" у стэка и идем на следующий элемент popped (дальше "рекурсия" 2) )
+        2.2) иначе 1)
+    """
     if len(pushed) != len(popped):
         return False
 
