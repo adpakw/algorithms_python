@@ -1,20 +1,20 @@
-.PHONY: stack_vs_queue
-stack_vs_queue:
-	pytest stack_vs_queue/test_stack_vs_queue.py
+.PHONY: two_sum
+two_sum:
+	pytest two_sum/test_two_sum.py
 
-.PHONY: validate
-validate:
-	pytest validate/test_validate.py
+.PHONY: anagrams
+anagrams:
+	pytest anagrams/test_anagrams.py
 
-.PHONY: merge_lists
-merge_lists:
-	pytest merge_lists/test_merge_lists.py
+.PHONY: hash_table
+hash_table:
+	pytest hash_table/test_hash_table.py
 
 .PHONY: lint
 lint:
-	mypy stack_vs_queue/*.py validate/*.py merge_lists/*.py
-	ruff check stack_vs_queue/*.py validate/*.py merge_lists/*.py
+	mypy two_sum/*.py anagrams/*.py hash_table/*.py
+	ruff check two_sum/*.py anagrams/*.py hash_table/*.py
 
 .PHONY: format
 format:
-	ruff format stack_vs_queue/*.py validate/*.py merge_lists/*.py
+	ruff format two_sum/*.py anagrams/*.py hash_table/*.py
