@@ -1,4 +1,4 @@
-from validate import validate_stack_sequences
+from homework_3.hash_table.hash_table import validate_stack_sequences
 
 
 def test_validate_stack_sequences():
