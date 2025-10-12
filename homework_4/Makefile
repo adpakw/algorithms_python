@@ -1,6 +1,6 @@
-.PHONY: two_sum
-two_sum:
-	pytest two_sum/test_two_sum.py
+.PHONY: validate_bst
+validate_bst:
+	pytest validate_bst/test_validate_bst.py
 
 .PHONY: traversal
 traversal:
@@ -8,13 +8,13 @@ traversal:
 
 .PHONY: hash_table
 hash_table:
-	pytest hash_table/test_hash_table.py
+	pytest -v hash_table/test_hash_table.py
 
 .PHONY: lint
 lint:
-	mypy two_sum/*.py traversal/*.py hash_table/*.py
-	ruff check two_sum/*.py traversal/*.py hash_table/*.py
+	mypy validate_bst/*.py traversal/*.py hash_table/*.py
+	ruff check validate_bst/*.py traversal/*.py hash_table/*.py
 
 .PHONY: format
 format:
-	ruff format two_sum/*.py traversal/*.py hash_table/*.py
+	ruff format validate_bst/*.py traversal/*.py hash_table/*.py
