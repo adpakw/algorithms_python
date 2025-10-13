@@ -38,6 +38,6 @@ def is_valid_bst_in_order(node: TreeNode) -> bool:
     bst = BST(root=node)
     in_order_elements = bst.in_order()
 
-    # преобразование к set нужно чтобы избежать случаев 
+    # преобразование к set нужно чтобы избежать случаев
     # с дублированием элементов(уже противоречит условиям BST)
     return in_order_elements == sorted(list(set(in_order_elements)))
