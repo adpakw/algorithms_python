@@ -6,15 +6,15 @@ validate_bst:
 traversal:
 	pytest traversal/test_traversal.py
 
-.PHONY: hash_table
-hash_table:
-	pytest -v hash_table/test_hash_table.py
+.PHONY: balanced_binary_tree
+balanced_binary_tree:
+	pytest balanced_binary_tree/test_balanced_binary_tree.py
 
 .PHONY: lint
 lint:
-	mypy validate_bst/*.py traversal/*.py hash_table/*.py
-	ruff check validate_bst/*.py traversal/*.py hash_table/*.py
+	mypy validate_bst/*.py traversal/*.py balanced_binary_tree/*.py
+	ruff check validate_bst/*.py traversal/*.py balanced_binary_tree/*.py
 
 .PHONY: format
 format:
-	ruff format validate_bst/*.py traversal/*.py hash_table/*.py
+	ruff format validate_bst/*.py traversal/*.py balanced_binary_tree/*.py
