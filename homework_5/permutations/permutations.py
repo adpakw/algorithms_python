@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Any, Callable, List
 
 
 def trace_recursion(func: Callable) -> Callable:
@@ -26,3 +26,27 @@ def trace_recursion(func: Callable) -> Callable:
             raise
 
     return wrapper
+
+
+@trace_recursion
+def permute(nums: List[Any]) -> List[List[Any]]:
+    @trace_recursion
+    def backtrack(index: Any, perm_list: List[Any]):
+        if index == len(perm_list):
+            result.append(perm_list[:])
+            return
+
+        for i in range(index, len(perm_list)):
+            perm_list[index], perm_list[i] = (
+                perm_list[i],
+                perm_list[index],
+            )  # меняем местами элементы
+            backtrack(index + 1, perm_list)
+            perm_list[index], perm_list[i] = (
+                perm_list[i],
+                perm_list[index],
+            )  # возвращаем массив в исходное состояние
+
+    result: List[Any] = []
+    backtrack(0, nums)
+    return result

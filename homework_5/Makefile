@@ -1,6 +1,6 @@
-.PHONY: traversal
-traversal:
-	pytest traversal/test_traversal.py
+.PHONY: permutations
+permutations:
+	pytest permutations/test_permutations.py
 
 .PHONY: balanced_binary_tree
 balanced_binary_tree:
@@ -8,9 +8,9 @@ balanced_binary_tree:
 
 .PHONY: lint
 lint:
-	mypy tracer/*.py traversal/*.py balanced_binary_tree/*.py
-	ruff check tracer/*.py traversal/*.py balanced_binary_tree/*.py
+	mypy tracer/*.py permutations/*.py balanced_binary_tree/*.py
+	ruff check tracer/*.py permutations/*.py balanced_binary_tree/*.py
 
 .PHONY: format
 format:
-	ruff format tracer/*.py traversal/*.py balanced_binary_tree/*.py
+	ruff format tracer/*.py permutations/*.py balanced_binary_tree/*.py
