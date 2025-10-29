@@ -2,15 +2,15 @@
 permutations:
 	pytest permutations/test_permutations.py
 
-.PHONY: balanced_binary_tree
-balanced_binary_tree:
-	pytest balanced_binary_tree/test_balanced_binary_tree.py
+.PHONY: avl
+avl:
+	pytest avl/test_avl.py
 
 .PHONY: lint
 lint:
-	mypy tracer/*.py permutations/*.py balanced_binary_tree/*.py
-	ruff check tracer/*.py permutations/*.py balanced_binary_tree/*.py
+	mypy tracer/*.py permutations/*.py avl/*.py
+	ruff check tracer/*.py permutations/*.py avl/*.py
 
 .PHONY: format
 format:
-	ruff format tracer/*.py permutations/*.py balanced_binary_tree/*.py
+	ruff format tracer/*.py permutations/*.py avl/*.py
