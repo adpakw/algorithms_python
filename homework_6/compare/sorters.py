@@ -13,8 +13,8 @@ def timer(func: Callable) -> Callable:
     return wrapper
 
 @timer
-def mergesort(arr: List[int]) -> List[int]:
-    def merge(left: List[int], right: List[int]) -> List[int]:
+def mergesort(arr: List[int | float]) -> List[int | float]:
+    def merge(left: List[int | float], right: List[int | float]) -> List[int | float]:
         result = []
         i = j = 0
 
@@ -30,7 +30,7 @@ def mergesort(arr: List[int]) -> List[int]:
         result.extend(right[j:])
         return result
 
-    def split(arr: List[int]) -> List[int]:
+    def split(arr: List[int | float]) -> List[int | float]:
         if len(arr) <= 1:
             return arr
 
@@ -43,8 +43,8 @@ def mergesort(arr: List[int]) -> List[int]:
     return split(arr)
 
 @timer
-def quicksort(arr: List[int]) -> List[int]:
-    def recursive_quicksort(arr: List[int]) -> List[int]:
+def quicksort(arr: List[int | float]) -> List[int | float]:
+    def recursive_quicksort(arr: List[int | float]) -> List[int | float]:
         if len(arr) <= 1:
             return arr
 

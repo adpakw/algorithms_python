@@ -46,7 +46,7 @@ def test_sorted_list():
     assert result_merge_sort_sorted_list == sorted(sorted_list)
     assert result_quick_sort_sorted_list == sorted(sorted_list)
 
-def test_sorted_list():
+def test_reversed_sorted():
     reversed_sorted = list(range(10_000, 0, -1))
 
     result_merge_sort_reversed_sorted = mergesort(reversed_sorted)
