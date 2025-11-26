@@ -2,9 +2,9 @@
 graph:
 	pytest graph/test_graph.py
 
-.PHONY: iterative
-iterative:
-	pytest iterative/test_iterative.py
+.PHONY: dijkstras
+dijkstras:
+	pytest dijkstras/test_dijkstras.py
 
 .PHONY: k_th
 k_th:
@@ -12,9 +12,9 @@ k_th:
 
 .PHONY: lint
 lint:
-	mypy graph/*.py iterative/*.py k_th/*.py
-	ruff check graph/*.py iterative/*.py k_th/*.py
+	mypy graph/*.py dijkstras/*.py k_th/*.py
+	ruff check graph/*.py dijkstras/*.py k_th/*.py
 
 .PHONY: format
 format:
-	ruff format graph/*.py iterative/*.py k_th/*.py
+	ruff format graph/*.py dijkstras/*.py k_th/*.py
