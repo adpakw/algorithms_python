@@ -1,62 +1,73 @@
-import numpy as np
-from homework_8.dijkstras.dijkstras import mergesort_iter, quicksort_iter
+from dijkstras import dijkstra
+import pytest
 
 
-def test_random_list():
-    random_list = list(np.random.randint(
-        low=np.iinfo(np.int64).min, high=np.iinfo(np.int64).max, size=10_000_000
-    ))
+def test_empty_graph():
+    graph = {}
 
-    result_merge_sort_random_list = mergesort_iter(random_list)
-    result_quick_sort_random_list = quicksort_iter(random_list)
-
-    assert result_merge_sort_random_list == sorted(random_list)
-    assert result_quick_sort_random_list == sorted(random_list)
+    with pytest.raises(KeyError):
+        dijkstra(graph, "A", "B")
 
 
-def test_random_w_dublicates_list():
-    random_w_dublicates_list = list(np.random.randint(low=-10, high=10, size=10_000))
+def test_single_node_graph():
+    graph = {"A": {}}
+    path, distance = dijkstra(graph, "A", "A")
 
-    result_merge_sort_random_w_dublicates_list = mergesort_iter(
-        random_w_dublicates_list
-    )
-    result_quick_sort_random_w_dublicates_list = quicksort_iter(
-        random_w_dublicates_list
-    )
-
-    assert result_merge_sort_random_w_dublicates_list == sorted(
-        random_w_dublicates_list
-    )
-    assert result_quick_sort_random_w_dublicates_list == sorted(
-        random_w_dublicates_list
-    )
+    assert path == ["A"]
+    assert distance == 0
 
 
-def test_all_same_list():
-    all_same_list = [5] * 10_000
+def test_unreachable_destination():
+    graph = {"A": {"B": 1}, "B": {"A": 1}, "C": {"D": 1}, "D": {"C": 1}}
+    path, distance = dijkstra(graph, "A", "C")
 
-    result_merge_sort_all_same_list = mergesort_iter(all_same_list)
-    result_quick_sort_all_same_list = quicksort_iter(all_same_list)
-
-    assert result_merge_sort_all_same_list == sorted(all_same_list)
-    assert result_quick_sort_all_same_list == sorted(all_same_list)
+    assert path == []
+    assert distance == float("inf")
 
 
-def test_sorted_list():
-    sorted_list = list(range(10_000))
+def test_same_start_and_end():
+    graph = {"A": {"B": 1}, "B": {"A": 1, "C": 2}, "C": {"B": 2}}
+    path, distance = dijkstra(graph, "B", "B")
 
-    result_merge_sort_sorted_list = mergesort_iter(sorted_list)
-    result_quick_sort_sorted_list = quicksort_iter(sorted_list)
-
-    assert result_merge_sort_sorted_list == sorted(sorted_list)
-    assert result_quick_sort_sorted_list == sorted(sorted_list)
+    assert path == ["B"]
+    assert distance == 0
 
 
-def test_reversed_sorted():
-    reversed_sorted = list(range(10_000, 0, -1))
+def test_disconnected_graph():
+    graph = {"A": {"B": 1}, "B": {"A": 1}, "C": {"D": 1}, "D": {"C": 1}, "E": {}}
+    path, distance = dijkstra(graph, "A", "E")
 
-    result_merge_sort_reversed_sorted = mergesort_iter(reversed_sorted)
-    result_quick_sort_reversed_sorted = quicksort_iter(reversed_sorted)
+    assert path == []
+    assert distance == float("inf")
 
-    assert result_merge_sort_reversed_sorted == sorted(reversed_sorted)
-    assert result_quick_sort_reversed_sorted == sorted(reversed_sorted)
+
+def test_multiple_paths():
+    graph = {
+        "A": {"B": 3, "C": 3},
+        "B": {"A": 3, "D": 3.5, "E": 2.8},
+        "C": {"A": 3, "E": 2.8, "F": 3.5},
+        "D": {"B": 3.5, "E": 3.1, "G": 10},
+        "E": {"B": 2.8, "C": 2.8, "D": 3.1, "G": 7},
+        "F": {"G": 2.5, "C": 3.5},
+        "G": {"F": 2.5, "E": 7, "D": 10},
+    }
+    path, distance = dijkstra(graph, "B", "F")
+
+    assert path == ["B", "E", "C", "F"]
+    assert distance == 9.1
+
+
+def test_cycle_graph():
+    graph = {"A": {"B": 1}, "B": {"C": 1}, "C": {"A": 1, "D": 1}, "D": {}}
+    path, distance = dijkstra(graph, "A", "D")
+
+    assert path == ["A", "B", "C", "D"]
+    assert distance == 3
+
+
+def test_zero_weight_edges():
+    graph = {"A": {"B": 0}, "B": {"C": 1}, "C": {"D": 0}, "D": {}}
+    path, distance = dijkstra(graph, "A", "D")
+
+    assert path == ["A", "B", "C", "D"]
+    assert distance == 1
