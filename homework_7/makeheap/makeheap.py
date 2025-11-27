@@ -26,7 +26,7 @@ def makeheap_n_log_n(arr: List[Union[int, float]]) -> List[Union[int, float]]:
             sift_up(heap, parent_index)
 
     heap = arr.copy()
-    for i in range(len(heap) - 1, 1, -1):
+    for i in range(1, len(heap)):
         sift_up(heap, i)
 
     return heap
