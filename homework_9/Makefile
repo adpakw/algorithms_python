@@ -2,9 +2,9 @@
 rabin_karp:
 	pytest rabin_karp/test_rabin_karp.py
 
-.PHONY: dijkstras
-dijkstras:
-	pytest dijkstras/test_dijkstras.py
+.PHONY: knuth_morris_pratt
+knuth_morris_pratt:
+	pytest knuth_morris_pratt/test_knuth_morris_pratt.py
 
 .PHONY: dag
 dag:
@@ -12,9 +12,9 @@ dag:
 
 .PHONY: lint
 lint:
-	mypy rabin_karp/*.py dijkstras/*.py dag/*.py
-	ruff check rabin_karp/*.py dijkstras/*.py dag/*.py
+	mypy rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
+	ruff check rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
 
 .PHONY: format
 format:
-	ruff format rabin_karp/*.py dijkstras/*.py dag/*.py
+	ruff format rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
