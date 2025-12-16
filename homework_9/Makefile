@@ -6,15 +6,15 @@ rabin_karp:
 knuth_morris_pratt:
 	pytest knuth_morris_pratt/test_knuth_morris_pratt.py
 
-.PHONY: dag
-dag:
-	pytest dag/test_dag.py
+.PHONY: lcs
+lcs:
+	pytest lcs/test_lcs.py
 
 .PHONY: lint
 lint:
-	mypy rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
-	ruff check rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
+	mypy rabin_karp/*.py knuth_morris_pratt/*.py lcs/*.py
+	ruff check rabin_karp/*.py knuth_morris_pratt/*.py lcs/*.py
 
 .PHONY: format
 format:
-	ruff format rabin_karp/*.py knuth_morris_pratt/*.py dag/*.py
+	ruff format rabin_karp/*.py knuth_morris_pratt/*.py lcs/*.py
